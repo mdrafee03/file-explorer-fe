@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon color="primary" class="file-or-folder-icon">
+            {{data.isDirectory ? 'folder': 'insert_drive_file' }}
+        </mat-icon>
+        <span class="file-or-folder-name">{{data.name}}</span>
+    </div>
+</h1>
+
+<mat-dialog-content>
+    <div fxLayout="row" fxLayoutAlign="start start">
+        <mat-icon fxFlex="20" color="primary" class="file-or-folder-icon-content">
+            {{data.isDirectory ? 'folder': 'insert_drive_file' }}
+        </mat-icon>
+        <div fxFlex="80">
+            <div *ngFor="let property of properties" fxLayout="row wrap" fxLayoutAlign="start center">
+                <div fxFlex="40">{{property.key}}</div>
+                <div fxFlex="60" class="property">{{property.value}}</div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

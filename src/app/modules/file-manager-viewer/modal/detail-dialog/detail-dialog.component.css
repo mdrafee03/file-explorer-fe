@@ -1,0 +1,17 @@
+.file-or-folder-name {
+  margin-left: 1rem;
+  font-size: large;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-or-folder-icon-content {
+  font-size: 60px;
+  height: 60px;
+}
+
+.property{
+    overflow-wrap: anywhere;
+}
