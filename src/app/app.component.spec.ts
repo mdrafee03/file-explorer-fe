@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'file-explorer-fe'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('file-explorer-fe');
+    expect(app.title).toEqual('app');
   });
 
   it('should render title', () => {
