@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: file-explorer-fe
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /usr/src/app
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./src:/usr/src/app/src
+      - /usr/src/app/node_modules
+    ports:
+      - 4200:4200 
+    command: /bin/sh -c "while sleep 1000; do :; done"
