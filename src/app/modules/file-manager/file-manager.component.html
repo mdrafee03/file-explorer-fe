@@ -14,8 +14,9 @@
       <span class="file-or-folder-name">{{element.name}}</span>
     </div>
   </div>
-  <div *ngIf="!fileElements?.length && !loading" class="empty-folder">Folder is Empty</div> 
-  <mat-progress-spinner mode="indeterminate" *ngIf="loading" class="loader"></mat-progress-spinner>
+  <div *ngIf="!fileElements?.length && !loading" class="empty-folder">Folder is Empty</div>
+  <div *ngIf="error" class="empty-folder">{{error}}</div>
+  <mat-progress-spinner mode="indeterminate" *ngIf="loading && !error" class="loader"></mat-progress-spinner>
 </div>
 
 <mat-menu #rootMenu="matMenu" [overlapTrigger]="false">

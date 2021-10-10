@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { GraphQLError } from 'graphql';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { FileService } from 'src/app/services/fileService/file.service';
 import { FileElement } from '../file-manager/interfaces/element.interface';
 import { DetailDialogComponent } from './modal/detail-dialog/detail-dialog.component';
@@ -25,6 +26,7 @@ export class FileManagerViewerComponent implements OnInit {
   currentPath: string = this.rootPath;
   canNavigateUp = false;
   loading = false;
+  error = ''
 
   ngOnInit() {
     this.getFiles();
@@ -32,9 +34,14 @@ export class FileManagerViewerComponent implements OnInit {
 
   getFiles() {
     this.loading = true;
+    this.error = ''
     this.fileElements = this.fileDataService.getFiles(this.currentPath).pipe(
       tap(() => this.loading = false),
-      map(res => res.data.files)
+      map(res => res.data.files),
+      catchError((err: GraphQLError) => {
+        this.error = err.message;
+        return throwError(err);
+      })
     )
   }
 
@@ -54,7 +61,6 @@ export class FileManagerViewerComponent implements OnInit {
 
   onDetailClick(element: FileElement) {
     const fullPath = this.fileService.pushToPath(this.currentPath, element.name);
-    console.log('full', this.currentPath, fullPath);
     this.fileDataService.getFile(this.fileService.pushToPath(this.currentPath, element.name)).subscribe(res => {
       let dialogRef = this.dialog.open(DetailDialogComponent, {
         data: { ...res.data.file, ...element, fullPath },

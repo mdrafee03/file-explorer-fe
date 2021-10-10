@@ -1,7 +1,7 @@
 <div style="height: 100%; box-sizing: border-box;">
     <mat-card style="height: 100%; box-sizing: border-box; padding:0">
         <file-manager [fileElements]="fileElements | async" [path]="currentPath" [canNavigateUp]="canNavigateUp"
-            [loading]="loading" (navigatedDown)="navigateToFolder($event)" (navigatedUp)="navigateUp()"
+            [loading]="loading" (navigatedDown)="navigateToFolder($event)" (navigatedUp)="navigateUp()" [error]="error"
             (detailClicked)="onDetailClick($event)">
         </file-manager>
     </mat-card>

@@ -15,6 +15,7 @@ export class FileManagerComponent implements OnChanges {
   @Input() canNavigateUp: boolean | undefined;
   @Input() path: string | undefined;
   @Input() loading = false;
+  @Input() error = '';
 
   @Output() detailClicked = new EventEmitter<FileElement>();
   @Output() navigatedDown = new EventEmitter<FileElement>();
