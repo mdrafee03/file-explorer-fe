@@ -15,3 +15,5 @@ File Explorer will be opened root folder of the server. It has the following fea
   - You can see the details of the folder/file by right click on any file/folder and click on detail from the menu, it will pop a modal where the details of the folder/file will be shown
   - It shows the error if graphql throws any error
   - It shows loader when graphql request is pending
+
+#### It has a backend to serve the request: https://github.com/mdrafee03/file-explorer-be
